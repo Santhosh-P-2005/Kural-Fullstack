@@ -11,6 +11,7 @@ const UserList = () => {
       .catch(error => console.error(error));
   }, []);
 
+  
   const getUsers = () => {
     axios.get('https://kural-fullstack.onrender.com/users')
       .then(response => setUsers(response.data))
