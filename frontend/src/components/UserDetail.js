@@ -9,7 +9,7 @@ const UserDetail = ({ user, getUsers }) => {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`http://localhost:5000/users/${user._id}`, { name, email, age });
+      await axios.put(`https://kural-fullstack.onrender.com/users/${user._id}`, { name, email, age });
       getUsers();
       setIsEditing(false);
     } catch (err) {
@@ -19,7 +19,7 @@ const UserDetail = ({ user, getUsers }) => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/users/${user._id}`);
+      await axios.delete(`https://kural-fullstack.onrender.com/users/${user._id}`);
       getUsers();
     } catch (err) {
       console.error(err);

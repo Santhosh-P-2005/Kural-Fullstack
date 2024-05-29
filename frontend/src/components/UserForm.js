@@ -9,7 +9,7 @@ const UserForm = ({ getUsers }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/users', { name, email, age });
+      await axios.post('https://kural-fullstack.onrender.com/users', { name, email, age });
       getUsers();
       setName('');
       setEmail('');

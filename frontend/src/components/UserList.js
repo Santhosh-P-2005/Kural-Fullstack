@@ -6,13 +6,13 @@ const UserList = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/users')
+    axios.get('https://kural-fullstack.onrender.com/users')
       .then(response => setUsers(response.data))
       .catch(error => console.error(error));
   }, []);
 
   const getUsers = () => {
-    axios.get('http://localhost:5000/users')
+    axios.get('https://kural-fullstack.onrender.com/users')
       .then(response => setUsers(response.data))
       .catch(error => console.error(error));
   };
