@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>CRUD App</h1>
+      <h1>திருக்குறள்</h1>
       <UserForm getUsers={getUsers} />
       <UserList users={users} />
     </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './UserForm.css';
 
 const UserForm = ({ getUsers }) => {
   const [name, setName] = useState('');
@@ -20,20 +21,20 @@ const UserForm = ({ getUsers }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>No:</label>
-        <input type="number" value={age} onChange={(e) => setAge(e.target.value)} />
+    <form onSubmit={handleSubmit} className="user-form">
+      <div className="form-group">
+        <label htmlFor="age">எண் : </label>
+        <input type="number" id="age" value={age} onChange={(e) => setAge(e.target.value)} className="input" />
       </div>
-      <div>
-        <label>Kural:</label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      <div className="form-group">
+        <label htmlFor="name">குறள் : </label>
+        <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} className="input" />
       </div>
-      <div>
-        <label>Desc:</label>
-        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <div className="form-group">
+        <label htmlFor="email">பொருள் : </label>
+        <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} className="input" />
       </div>
-      <button type="submit">Add Kural</button>
+      <span><button type="submit" className="button">+Add குறள்</button></span>
     </form>
   );
 };

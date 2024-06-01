@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
+import './UserDetail.css';
 
 const UserDetail = ({ user, getUsers }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -8,106 +8,55 @@ const UserDetail = ({ user, getUsers }) => {
   const [email, setEmail] = useState(user.email);
   const [age, setAge] = useState(user.age);
   const [message, setMessage] = useState('');
+  const kural = name.split(" ");
 
   const handleUpdate = async () => {
     try {
       await axios.put(`https://kural-fullstack.onrender.com/users/${user._id}`, { name, email, age });
       getUsers();
       setIsEditing(false);
-      setMessage('User updated successfully!');
+      setMessage('குறள் updated successfully!');
     } catch (err) {
-      setMessage('Failed to update user.');
+      setMessage('Failed to update குறள்.');
       console.error(err);
     }
   };
 
   const handleDelete = async () => {
-    if (window.confirm('Are you sure you want to delete this user?')) {
+    if (window.confirm('Are you sure you want to delete this குறள்?')) {
       try {
         await axios.delete(`https://kural-fullstack.onrender.com/users/${user._id}`);
         getUsers();
-        setMessage('User deleted successfully!');
+        setMessage('குறள் deleted successfully!');
       } catch (err) {
-        setMessage('Failed to delete user.');
+        setMessage('Failed to delete குறள்.');
         console.error(err);
       }
     }
   };
 
   return (
-    <Container>
+    <div className="container">
       {isEditing ? (
-        <EditForm>
-          <Input type="number" value={age} onChange={(e) => setAge(e.target.value)} placeholder="Age" />
-          <Input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
-          <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-          <Button onClick={handleUpdate}>Update</Button>
-          <Button onClick={() => setIsEditing(false)}>Cancel</Button>
-        </EditForm>
+        <div className="edit-form">
+          <span>எண் : <input type="number" value={age} onChange={(e) => setAge(e.target.value)} placeholder="Age" className="input" /></span>
+          <span>குறள் : <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" className="input" /></span>
+          <span>பொருள் : <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" className="input" /></span>
+          <span><button onClick={handleUpdate} className="button-update">Update</button>
+          <button onClick={() => setIsEditing(false)} className="button-cancel">Cancel</button></span>
+        </div>
       ) : (
-        <UserInfo>
-          <span>{age}</span> . <span>{name}</span>
-          <br/><br/><b>விளக்கம் : </b> <span>{email}</span>
-          <Button onClick={() => setIsEditing(true)}>Edit</Button>
-          <Button onClick={handleDelete}>Delete</Button>
-        </UserInfo>
+        <div className="user-info">
+          <span>{age} . {kural[1] + " " + kural[2] + " " + kural[3] + " " + kural[4]}</span>
+          <span>{kural[5] + " " + kural[6] + " " + kural[7]}</span>
+          <br/><b>விளக்கம் : </b> <span>{email}<br/><br/>
+          <button onClick={() => setIsEditing(true)} className="button-edit">Edit</button>
+          <button onClick={handleDelete} className="button-delete">Delete</button></span>
+        </div>
       )}
-      {message && <Message>{message}</Message>}
-    </Container>
+      {message && <div className="message">{message}</div>}
+    </div>
   );
 };
 
 export default UserDetail;
-
-const Container = styled.div`
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  background-color: #f9f9f9;
-`;
-
-const UserInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
-const EditForm = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
-const Input = styled.input`
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-`;
-
-const Button = styled.button`
-  padding: 10px 15px;
-  margin-top: 5px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  &:hover {
-    background-color: #0056b3;
-  }
-  &:not(:last-child) {
-    margin-right: 5px;
-  }
-`;
-
-const Message = styled.div`
-  margin-top: 15px;
-  padding: 10px;
-  border: 1px solid #d4d4d4;
-  border-radius: 4px;
-  background-color: #e7f3e7;
-  color: #3c763d;
-`;
