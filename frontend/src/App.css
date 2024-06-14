@@ -1,0 +1,7 @@
+.home{
+    background-image: url('./photos/thirukkural_back.png');
+    background-size: 100%;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}

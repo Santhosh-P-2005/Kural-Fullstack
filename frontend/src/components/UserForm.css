@@ -1,7 +1,8 @@
 .user-form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 15px;
+    width: 1060px;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -21,10 +22,10 @@
   }
   
   .input {
-    padding: 10px;
+    margin: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 60%  ;
+    width: 90%  ;
     font-size: 16px;
   }
   
@@ -32,6 +33,7 @@
         padding: 10px 15px;
         margin-top: 5px;
         border: none;
+        opacity: .8;
         border-radius: 4px;
         background-color: #007bff;
         color: white;
@@ -43,3 +45,32 @@
     background-color: #0056b3;
   }
   
+  img{
+    height: 370px;
+    padding-right: 70px;
+  }
+
+  .firstdiv{
+    width: 1500px;
+  }
+   
+  #update {
+    background-color: #28e74b;
+    color: white;
+    padding: 15px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  #update.show {
+    opacity: 1;
+  }
+  
+  .hidden {
+      display: none;
+  }

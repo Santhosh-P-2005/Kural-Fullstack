@@ -17,7 +17,7 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <div className='home'>
       <h1>திருக்குறள்</h1>
       <UserForm getUsers={getUsers} />
       <UserList users={users} />
